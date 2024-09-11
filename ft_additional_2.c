@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	calculate_size(int n)
+int	calculate_size(long n)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	calculate_size(int n)
 	return (i);
 }
 
-void	fullfill_itoa(char *res, int n, int minus, int size)
+void	fullfill_itoa(char *res, long n, int minus, int size)
 {
 	if (n == 0)
 		res[0] = '0';
@@ -51,19 +51,21 @@ char	*ft_itoa(int n)
 	char	*res;
 	int		j;
 	int		minus;
+	long	numb;
 
 	j = calculate_size(n) + 1;
 	minus = 0;
-	if (n < 0)
+	numb = n;
+	if (numb < 0)
 	{
 		minus = 1;
-		n *= -1;
+		numb *= -1;
 	}
 	res = (char *)malloc((j) * sizeof(char));
 	if (res == NULL)
 		return (NULL);
 	res[--j] = '\0';
-	fullfill_itoa(res, n, minus, j);
+	fullfill_itoa(res, numb, minus, j);
 	return (res);
 }
 

@@ -22,7 +22,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 
@@ -32,65 +32,61 @@ char	*ft_strlcpy(char *dst, const char *src, size_t size)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	if (size != 0)
+		dst[i] = '\0';
+	return (ft_strlen((char *)src));
 }
 
-extern	size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i1;
-	size_t	i2;
-	size_t	size_dst;
+	size_t	i;
+	size_t	j;
+	size_t	to_copy;
+	size_t	dest_size;
 
-	i1 = 0;
-	i2 = 0;
-	while (dst[i1] != '\0')
-		i1++;
-	size_dst = i1;
-	while (src[i2] != '\0' && i1 < size - 1 && size != 0)
+	j = 0;
+	dest_size = ft_strlen(dst);
+	i = dest_size;
+	if (size <= dest_size)
+		return (ft_strlen((char *)src) + size);
+	else
+		to_copy = size - ft_strlen(dst) - 1;
+	while (j != to_copy)
 	{
-		dst[i1] = src[i2];
-		i1++;
-		i2++;
+		dst[i] = src[j];
+		i++;
+		j++;
 	}
-	dst[i1] = '\0';
-	i2 = 0;
-	while (src[i2] != '\0')
-		i2++;
-	return (size_dst + i2);
+	dst[i] = '\0';
+	return (dest_size + ft_strlen((char *)src));
 }
 
 char	*ft_strchr(const char *str, int search_str)
 {
 	int	i;
+	int	size;
 
 	i = 0;
-	while (str[i] != '\0')
+	size = (int) ft_strlen((char *)str) + 1;
+	while (i <= size)
 	{
-		if (str[i] != search_str)
-			i++;
-		else
-			break ;
+		if (str[i] == search_str)
+			return ((char *)(str + i));
+		i++;
 	}
-	return ((char *)(str + i));
+	return (NULL);
 }
 
 char	*ft_strrchr(const char *str, int c)
 {
 	int		i;
-	char	*pnt;
 
 	i = (int) ft_strlen((char *) str) + 1;
 	while (i >= 0)
 	{
 		if (str[i] == c)
-		{
-			pnt = (char *)str + i;
-			break ;
-		}
+			return ((char *)str + i);
 		i--;
 	}
-	if (i < 0)
-		return (0);
-	return (pnt);
+	return (NULL);
 }

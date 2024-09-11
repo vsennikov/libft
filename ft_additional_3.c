@@ -35,10 +35,36 @@ void	ft_putendl_fd(char *s, int fd)
 	write(fd, "\n", 1);
 }
 
+void	write_from_end(char *str, int index, int fd)
+{
+	while (index >= 0)
+	{
+		write(fd, &str[index], sizeof(char));
+		index--;
+	}
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*res;
+	long	numb;
+	int		i;
+	char	str[11];
 
-	res = ft_itoa(n);
-	ft_putstr_fd(res, fd);
+	i = 0;
+	numb = n;
+	if (numb == 0)
+		write(fd, "0", sizeof(char));
+	else if (numb < 0)
+	{
+		numb *= -1;
+		write(fd, "-", sizeof(char));
+	}
+	while (numb > 0)
+	{
+		str[i] = numb % 10 + '0';
+		numb /= 10;
+		i++;
+	}
+	str[i] = '\0';
+	write_from_end(str, i - 1, fd);
 }

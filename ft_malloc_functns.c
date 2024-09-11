@@ -21,7 +21,7 @@ void	*ft_calloc(size_t nitems, size_t size)
 	arr = (int *)malloc(nitems * size);
 	if (arr == NULL)
 		return (NULL);
-	while (i != size)
+	while (i != nitems)
 	{
 		arr[i] = 0;
 		i++;
@@ -34,9 +34,7 @@ char	*ft_strdup(const char *s)
 	int		i;
 	char	*res;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
+	i = ft_strlen((char *) s) + 1;
 	res = (char *)malloc(i * sizeof(char));
 	if (res == NULL)
 		return (NULL);

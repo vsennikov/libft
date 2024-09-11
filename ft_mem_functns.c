@@ -29,7 +29,7 @@ void	*ft_memset(void *str, int c, size_t n)
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, '0', n);
+	ft_memset(s, '\0', n);
 }
 
 void	*ft_memcpy(void *dest_str, const void *src_str, size_t n)
@@ -56,12 +56,10 @@ void	*ft_memmove(void *dest_str, const void *src_str, size_t numBytes)
 
 	dest = (unsigned char *) dest_str;
 	src = (unsigned char *) src_str;
-	if (dest == src)
-		return (dest);
-	else if (dest > src && src + numBytes > dest)
+	if (dest > src && src + numBytes > dest)
 	{
-		dest += numBytes;
-		src += numBytes;
+		dest += numBytes - 1;
+		src += numBytes - 1;
 		while (numBytes != 0)
 		{
 			*dest = *src;
@@ -72,19 +70,17 @@ void	*ft_memmove(void *dest_str, const void *src_str, size_t numBytes)
 	}
 	else
 		dest = ft_memcpy(dest_str, src_str, numBytes);
-	return (dest);
+	return (dest_str);
 }
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	size_t			i;
 	unsigned char	*uc_str;
 
-	i = 0;
 	uc_str = (unsigned char *) str;
 	while (n != 0)
 	{
-		if (*uc_str == c)
+		if (*uc_str == (unsigned char) c)
 		{
 			return (uc_str);
 			break ;

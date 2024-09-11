@@ -86,7 +86,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	last_pos = (int) ft_strlen((char *)s1) - 1;
 	while (part_of_set(set, s1[last_pos]) == 1)
 		last_pos--;
-	res = ft_substr(s1, start_pos, (last_pos - start_pos));
+	res = ft_substr(s1, start_pos, (last_pos - start_pos) + 1);
 	return (res);
 }
 
