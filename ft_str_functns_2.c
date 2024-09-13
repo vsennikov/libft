@@ -33,6 +33,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	size_t	n;
 
 	i = 0;
 	j = 0;
@@ -42,18 +43,17 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	{
 		if (big[i] == little[j])
 		{
-			while (big[i] == little[j] && i != len && little[j] != '\0')
+			n = i;
+			while (big[n] == little[j] && n != len && little[j] != '\0')
 			{
-				i++;
+				n++;
 				j++;
 			}
 			if (little[j] == '\0')
-				return ((char *)&big[i - j]);
-			else
-				j = 0;
+				return ((char *)&big[n - j]);
+			j = 0;
 		}
-		else
-			i++;
+		i++;
 	}
 	return (NULL);
 }

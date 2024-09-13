@@ -51,7 +51,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (ft_strlen((char *)src) + size);
 	else
 		to_copy = size - ft_strlen(dst) - 1;
-	while (j != to_copy)
+	while (j != to_copy && src[j] != '\0')
 	{
 		dst[i] = src[j];
 		i++;
@@ -67,10 +67,10 @@ char	*ft_strchr(const char *str, int search_str)
 	int	size;
 
 	i = 0;
-	size = (int) ft_strlen((char *)str) + 1;
+	size = (int) ft_strlen((char *)str);
 	while (i <= size)
 	{
-		if (str[i] == search_str)
+		if ((unsigned char) str[i] == (unsigned char) search_str)
 			return ((char *)(str + i));
 		i++;
 	}
@@ -81,10 +81,10 @@ char	*ft_strrchr(const char *str, int c)
 {
 	int		i;
 
-	i = (int) ft_strlen((char *) str) + 1;
+	i = (int) ft_strlen((char *) str);
 	while (i >= 0)
 	{
-		if (str[i] == c)
+		if ((unsigned char)str[i] == (unsigned char)c)
 			return ((char *)str + i);
 		i--;
 	}
