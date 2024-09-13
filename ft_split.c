@@ -6,13 +6,37 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:27:46 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/09/06 13:31:53 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:17:23 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	**create_arr(char const *s, char c)
+/** 
+ * Allocates (with malloc(3)) and returns an array
+ * of strings obtained by splitting ’s’ using the
+ * character ’c’ as a delimiter. The array must end
+ * with a NULL pointer.
+ * 
+ * @param s   
+ * The string to be split
+ * @param c     
+ * The delimiter character.
+ * 
+ * @return
+ * The array of new strings resulting from the split.
+ * NULL if the allocation fails.
+ * 
+ * @note
+ * If s contain only delimetr chars, we call special func
+ * that returns **res with 1 el which = 0.
+ * In other case we call trim to delete delimetr from begging
+ * and end of str. Than call create_arr() which is calculating
+ * numb of delimets + 2 (example: we have 2 words with 1 delim, in
+ * that case we will create arr with size 3(2 for words and 1 for 
+ * 0)). After that we start fullfill arr with substr().
+ * Also free trimed_arr after trim() 
+ */
+static char	**create_arr(char const *s, char c)
 {
 	char	**res;
 	int		i;
@@ -38,7 +62,7 @@ char	**create_arr(char const *s, char c)
 	return (res);
 }
 
-void	*free_arr(char **res)
+static void	*free_arr(char **res)
 {
 	int	i;
 
@@ -52,7 +76,7 @@ void	*free_arr(char **res)
 	return (NULL);
 }
 
-char	**fullfill_arr(char const *s, char c, char **res)
+static char	**fullfill_arr(char const *s, char c, char **res)
 {
 	int		start_pos;
 	int		i;
@@ -80,7 +104,7 @@ char	**fullfill_arr(char const *s, char c, char **res)
 	return (res);
 }
 
-char	**arr_of_delim(void)
+static char	**arr_of_delim(void)
 {
 	char	**res;
 
@@ -108,14 +132,22 @@ char	**ft_split(char const *s, char c)
 		i++;
 	if (i == (int)ft_strlen((char *) s))
 	{
-		res = arr_of_delim();
-		return (res);
+		return (arr_of_delim());
+		// res = arr_of_delim();
+		// return (res);
 	}
 	trimed = ft_strtrim(s, &c);
+	if (trimed == NULL)
+		return (NULL);
 	res = create_arr(trimed, c);
 	if (res == NULL)
+	{
+		free(trimed);
 		return (NULL);
+	}
 	res = fullfill_arr(trimed, c, res);
 	free(trimed);
+	if (res == NULL)
+		return (NULL);
 	return (res);
 }
