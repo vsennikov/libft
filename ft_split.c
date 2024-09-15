@@ -111,12 +111,6 @@ static char	**arr_of_delim(void)
 	res = (char **)malloc(sizeof(char *));
 	if (res == NULL)
 		return (NULL);
-	res[0] = malloc(sizeof(char));
-	if (res[0] == NULL)
-	{
-		free(res);
-		return (NULL);
-	}
 	res[0] = 0;
 	return (res);
 }
@@ -131,11 +125,7 @@ char	**ft_split(char const *s, char c)
 	while (s[i] == c && s[i] != '\0')
 		i++;
 	if (i == (int)ft_strlen((char *) s))
-	{
 		return (arr_of_delim());
-		// res = arr_of_delim();
-		// return (res);
-	}
 	trimed = ft_strtrim(s, &c);
 	if (trimed == NULL)
 		return (NULL);

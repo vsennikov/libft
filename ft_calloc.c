@@ -33,14 +33,16 @@
 */
 void	*ft_calloc(size_t nitems, size_t size)
 {
-	int		*arr;
+	unsigned char		*arr;
 	size_t	i;
 
 	i = 0;
-	arr = (int *)malloc(nitems * size);
+	if (nitems * size == 0)
+		return (NULL);
+	arr = (unsigned char *)malloc(nitems * size);
 	if (arr == NULL)
 		return (NULL);
-	while (i != nitems)
+	while (i != nitems * size)
 	{
 		arr[i] = 0;
 		i++;

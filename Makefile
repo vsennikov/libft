@@ -9,7 +9,7 @@ OBJ = $(SRC:.c=.o)
 
 NAME = libft.a
 
-all: $(NAME) clean
+all: $(NAME) 
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)

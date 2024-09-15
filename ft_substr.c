@@ -20,7 +20,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	real_size = ft_strlen((char *) s);
-	if (start > real_size - 1)
+	if ((start > real_size - 1 && real_size != 0))
+		len = 0;
+	else if (real_size == 0 && start > real_size)
 		len = 0;
 	else
 		real_size = ft_strlen((char *) s + start);
