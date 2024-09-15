@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:27:46 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/09/13 13:17:23 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:44:39 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,3 +141,21 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (res);
 }
+
+// #include "libft.h"
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char **res;
+
+// 	res = ft_split("hello!",' ');
+// 	int	i = 0;
+// 		while (res[i] != 0)
+// 	{
+// 		printf("%s\n", res[i]);
+// 		free(res[i]);
+// 		i++;
+// 	}
+// 	free(res[i]);
+// 	free(res);
+// }

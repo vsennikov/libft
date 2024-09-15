@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 11:54:05 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/09/13 12:44:20 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/09/15 16:08:58 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@
 */
 void	*ft_calloc(size_t nitems, size_t size)
 {
-	unsigned char		*arr;
-	size_t	i;
+	unsigned char	*arr;
+	size_t			i;
 
 	i = 0;
 	if (nitems * size == 0)
-		return (NULL);
+		return (0);
 	arr = (unsigned char *)malloc(nitems * size);
 	if (arr == NULL)
 		return (NULL);

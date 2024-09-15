@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 11:41:00 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/09/13 13:00:01 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:29:20 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
  * 
  * @return
  * This function returns a pointer to destination.
+ * 
+ * @note
+ * Added checking for Null at dest && src for francinette. But 
+ * regular memcpy give error "null passed to a callee that 
+ * requires a non-null argument"
  */
 void	*ft_memcpy(void *dest_str, const void *src_str, size_t n)
 {

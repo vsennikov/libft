@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 11:39:14 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/09/13 13:41:22 by vsenniko         ###   ########.fr       */
+/*   Created: 2024/09/15 16:15:59 by vsenniko          #+#    #+#             */
+/*   Updated: 2024/09/15 16:17:03 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	i;
+	t_list	*current;
+	t_list	*tmp;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	if (lst == NULL || del == NULL)
+		return ;
+	current = *lst;
+	while (current != NULL)
+	{
+		tmp = current;
+		current = current->next;
+		ft_lstdelone(tmp, del);
+	}
+	lst = NULL;
 }
