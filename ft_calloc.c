@@ -37,8 +37,6 @@ void	*ft_calloc(size_t nitems, size_t size)
 	size_t			i;
 
 	i = 0;
-	if (nitems * size == 0)
-		return (0);
 	arr = (unsigned char *)malloc(nitems * size);
 	if (arr == NULL)
 		return (NULL);

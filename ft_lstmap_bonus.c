@@ -12,71 +12,50 @@
 
 #include "libft.h"
 
-t_list	*init_start_lst(t_list *lst, void *(*f)(void *))
+void	*del_con_and_lst(void (*del)(void *), void	*content, t_list *start_lst)
 {
-	t_list	*start_lst;
-
-	start_lst = malloc(sizeof(t_list));
-	if (start_lst == NULL)
-		return (NULL);
-	start_lst->content = lst->content;
-	f(start_lst->content);
-	start_lst->next = lst->next;
-	lst = lst->next;
-	return (start_lst);
+	del(content);
+	ft_lstclear(&start_lst, del);
+	return (NULL);
 }
 
-t_list	*init_c_l(t_list *l, t_list *s, void *(*f)(void *))
+void	*del_lst(t_list *start_lst, void (*del)(void *))
 {
-	t_list	*current;
-
-	current = malloc(sizeof(t_list));
-	if (current == NULL)
-		return (NULL);
-	current->content = l->content;
-	f(current->content);
-	current->next = l->next;
-	s->next = current;
-	l = l->next;
-	return (current);
+	ft_lstclear(&start_lst, del);
+	return (NULL);
 }
 
-t_list	*fulfill_c(t_list *lst, t_list *current, void *(*f)(void *))
+void	*del_con(void (*del)(void *), void	*content)
 {
-	current = malloc(sizeof(t_list));
-	if (current == NULL)
-		return (NULL);
-	current->content = lst->content;
-	f(current->content);
-	current->next = lst->next;
-	lst = lst->next;
-	return (current);
+	del(content);
+	return (NULL);
 }
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*start_lst;
 	t_list	*current;
+	void	*content;
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	start_lst = init_start_lst(lst, f);
+	content = f(lst->content);
+	if (content == NULL)
+		return (NULL);
+	start_lst = ft_lstnew(content);
 	if (start_lst == NULL)
-		return (NULL);
-	current = init_c_l(lst, start_lst, f);
-	if (current == NULL)
-	{
-		ft_lstdelone(start_lst, del);
-		return (NULL);
-	}
+		return (del_con(del, content));
+	lst = lst->next;
 	while (lst != NULL)
 	{
-		current = fulfill_c(lst, current, f);
+		content = f(lst->content);
+		if (content == NULL)
+			return (del_lst(start_lst, del));
+		current = ft_lstnew(content);
 		if (current == NULL)
-		{
-			ft_lstclear(&start_lst, del);
-			return (NULL);
-		}
+			return (del_con_and_lst(del, content, start_lst));
+		ft_lstadd_back(&start_lst, current);
+		lst = lst->next;
 	}
 	return (start_lst);
 }

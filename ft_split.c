@@ -55,7 +55,7 @@ static char	**create_arr(char const *s, char c)
 		if (s[i] != '\0')
 			i++;
 	}
-	res = (char **)malloc((res_size + 2) * sizeof(char *));
+	res = (char **)ft_calloc((res_size + 2), sizeof(char *));
 	if (res == NULL)
 		return (NULL);
 	res[res_size + 1] = 0;
