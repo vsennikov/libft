@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:27:46 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/09/15 17:31:04 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:38:40 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,18 @@ static char	**fullfill_arr(char const *s, char c, char **res)
 		if (s[i] == c || s[i] == '\0')
 		{
 			temp = ft_substr(s, start_pos, i - start_pos);
+			printf("%s\n", temp);
 			if (temp == NULL)
 				return (free_arr(res));
 			res[j] = temp;
 			j++;
-			while (s[i] == c && s[i + 1] == c)
+			while (i < (int)ft_strlen((char *)s) && s[i] == c && s[i + 1] == c)
 				i++;
 			start_pos = i + 1;
 		}
-		i++;
+		if (s[i] == '\0')
+			break ;
+		++i;
 	}
 	return (res);
 }
