@@ -19,16 +19,19 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $^
 
-bonus: $(OBJB)
+BONUS_FLAG = .bonus
 
-$(NAME): $(OBJ) $(OBJB)
-	ar rcs $(NAME) $^
+$(BONUS_FLAG) : $(OBJB)
+	ar rcs $(NAME) $?
+	@touch	$(BONUS_FLAG)
+
+bonus: $(NAME) $(BONUS_FLAG)
 
 clean:
-	rm -f $(OBJ) $(OBJB)
+	rm -f $(OBJ) $(OBJB) 
 
 fclean: 
-	rm -f $(NAME) $(OBJ) $(OBJB)
+	rm -f $(NAME) $(OBJ) $(OBJB) $(BONUS_FLAG)
 
 re: fclean all
 
