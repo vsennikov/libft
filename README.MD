@@ -23,7 +23,7 @@ This repository also includes **ft_printf**, a custom implementation of the C `p
 ### 🛠 How to Use the Library
 1. **Clone the Repository**:
 	```sh
-	git clone https://github.com/yourusername/libft.git
+	git clone https://github.com/vsennikov/libft.git
 	cd libft
 	```
 
