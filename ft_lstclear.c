@@ -12,6 +12,18 @@
 
 #include "libft.h"
 
+/**
+ * @file ft_lstclear.c
+ * @brief Contains the implementation of the ft_lstclear function.
+ *
+ * The ft_lstclear function deletes and frees the given linked list and its content
+ * using the function 'del' and free(3). Finally, the pointer to the list is set to NULL.
+ *
+ * @param lst A pointer to the pointer of the first element of the list.
+ * @param del A function pointer to the function used to delete the content of an element.
+ *
+ * @note If either lst or del is NULL, the function does nothing.
+ */
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*current;

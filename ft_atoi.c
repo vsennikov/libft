@@ -17,22 +17,6 @@ static int	ft_isspace(char ch)
 	return (0);
 }
 
-/** 
- * The  atoi() function converts the initial portion of the string pointed 
- * to by nptr to int. The behavior is the same as strtol(nptr, NULL, 10);
- * except that atoi() does not detect errors.
- * 
- * @param str 
- * It is a pointer to a null-terminated sting, which represent the a integer.
- *  It can have one '+' or one '-'and a bunch of spaces.
- * 
- * @return	  
- * The converted value or 0 on error.
- * 
- * @note	  
- * Spaces checked with static func. 
- * 
-*/
 int	ft_atoi(const char *str)
 {
 	int	i;

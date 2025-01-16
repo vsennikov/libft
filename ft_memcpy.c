@@ -12,28 +12,6 @@
 
 #include "libft.h"
 
-/** 
- * The  memcpy() function is used to specify the range 
- * of characters which could not exceed the size of the source 
- * memory.
- * @param dest_str   
- * This parameter define a pointer to the destination array where
- * the content is to be copied. It is type-casted to a pointer of
- * type void*
- * @param src_str     
- * This parameter is used to define the source of data to be copied.
- *  It is then type-casted to a pointer of type void*.
- * @param n
- * This parameter define the number of bytes to be copied. 
- * 
- * @return
- * This function returns a pointer to destination.
- * 
- * @note
- * Added checking for Null at dest && src for francinette. But 
- * regular memcpy give error "null passed to a callee that 
- * requires a non-null argument"
- */
 void	*ft_memcpy(void *dest_str, const void *src_str, size_t n)
 {
 	size_t			i;

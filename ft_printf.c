@@ -12,6 +12,33 @@
 
 #include "libft.h"
 
+/**
+ * @file ft_printf.c
+ * @brief Custom implementation of the printf function.
+ *
+ * This file contains the implementation of a custom printf function named ft_printf.
+ * It supports various format specifiers to print different types of data.
+ *
+ * Supporting Functions:
+ * - static int write_char(int c): Writes a single character to the standard output.
+ * - int write_str(char *str): Writes a string to the standard output.
+ * - static int choose_func(char c, va_list ap): Chooses the appropriate function to handle the format specifier.
+ *
+ * Supported Format Specifiers:
+ * - %c: Character
+ * - %s: String
+ * - %%: Percent sign
+ * - %d, %i: Signed decimal integer
+ * - %u: Unsigned decimal integer
+ * - %x: Unsigned hexadecimal integer (lowercase)
+ * - %X: Unsigned hexadecimal integer (uppercase)
+ * - %p: Pointer address
+ *
+ * @param format The format string containing the text to be written and format specifiers.
+ * @param ... Additional arguments specifying the data to be printed.
+ * @return The total number of characters written, or -1 if an error occurs.
+ */
+
 static int	write_char(int c)
 {
 	return (write(1, &c, 1));
@@ -83,214 +110,3 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (counter);
 }
-
-// #include <limits.h>
-// int    main(void)
-// {
-// 	int counter; 
-
-// 	counter = ft_printf(NULL);
-// 	printf("%d\n", counter);
-// 	counter = printf(NULL);
-// 	printf("%d", counter);
-
-// }
-// 	int	counter;
-// 	//%c
-	// counter = ft_printf("%c\n", 'a');
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%c\n", 'a');
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%c\n", 127);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%c\n", 127);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%c\n", '\0');
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%c\n", '\0');
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%c\n", NULL);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%c\n", NULL);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%c\n", "NULL");
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%c\n", "NULL");
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%c\n", "");
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%c\n", "");
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-
-	//%s
-	// counter = ft_printf("Hello world!\n");
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("Hello world\n");
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("Hello%s !%s\n", "world");
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("Hello%s !%s\n", "world");
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("Hello%s !\n", NULL);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("Hello%s !\n", NULL);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-
-	//%p
-	// void *p1 = 10;
-	// counter = ft_printf("%p\n", p1);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%p\n", p1);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// void *p2;
-	// counter = ft_printf("%p\n", p2);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%p\n", p2);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// char *str = "regpfdjve ";
-	// void *p3 = &str;
-	// counter = ft_printf("%p\n", p3);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%p\n", p3);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%p %p\n", LONG_MIN, LONG_MAX);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%p %p\n", LONG_MIN, LONG_MAX);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-
-	//%d %i
-	// counter = ft_printf("%d\n", INT_MIN);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%d\n", INT_MIN);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%d\n", INT_MAX);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%d\n", INT_MAX);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%d\n", INT_MAX + 1);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%d\n", INT_MAX + 1);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// long long lnb = LLONG_MAX - 10;
-	// counter = ft_printf("%d\n", lnb);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%d\n", lnb);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-
-	//%u
-	// counter = ft_printf("%u\n", UINT_MAX);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%u\n", UINT_MAX);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");	
-	// counter = ft_printf("%u\n", 0);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%u\n", 0);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%u\n", NULL);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%u\n", NULL);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%u\n", "Hello");
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%u\n", "Hello");
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");	
-	// counter = ft_printf("%u\n", INT_MIN);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%u\n", INT_MIN);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");	
-
-	//%x
-	// counter = ft_printf("%x\n", INT_MIN);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%x\n", INT_MIN);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%x\n", INT_MAX);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%x\n", INT_MAX);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%x\n", LLONG_MAX);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%x\n", LLONG_MAX);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%x\n", LONG_MIN);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%x\n", LONG_MIN);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%x\n", -1);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%x\n", -1);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-
-	//%X
-	// counter = ft_printf("%X\n", INT_MIN);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%X\n", INT_MIN);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%X\n", INT_MAX);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%X\n", INT_MAX);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%X\n", LLONG_MAX);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%X\n", LLONG_MAX);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%X\n", LONG_MIN);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%X\n", LONG_MIN);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-	// counter = ft_printf("%X\n", -1);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%X\n", -1);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-
-	//%%
-// 	counter = ft_printf("%%\n");
-// 	printf("ft_printf counter = %d\n", counter);
-// 	counter = printf("%%\n");
-// 	printf("printf counter = %d\n", counter);
-// 	printf("============================\n");
-	// counter = ft_printf("%%%\n");
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%%%\n");
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-
-	//smt
-	// counter = ft_printf("%ww%w\n", 10, 20);
-	// printf("ft_printf counter = %d\n", counter);
-	// counter = printf("%ww%w\n", 10, 20);
-	// printf("printf counter = %d\n", counter);
-	// printf("============================\n");
-// }

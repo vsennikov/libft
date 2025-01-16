@@ -12,6 +12,28 @@
 
 #include "libft.h"
 
+/**
+ * @file ft_itoa.c
+ * @brief Converts an integer to a null-terminated string.
+ *
+ * This file contains the implementation of the ft_itoa function, which converts
+ * an integer to a null-terminated string. It also includes two supporting
+ * static functions: calculate_size and fullfill_itoa.
+ *
+ * @details
+ * The ft_itoa function allocates memory for the resulting string and handles
+ * negative numbers by adding a '-' sign at the beginning of the string.
+ *
+ * Supporting Functions:
+ * - calculate_size: Calculates the number of characters needed to represent
+ *   the integer, including the sign if the number is negative.
+ * - fullfill_itoa: Fills the allocated string with the appropriate characters
+ *   representing the integer.
+ *
+ * @param n The integer to be converted to a string.
+ * @return A pointer to the null-terminated string representing the integer.
+ *         Returns NULL if memory allocation fails.
+ */
 static int	calculate_size(long n)
 {
 	int	i;

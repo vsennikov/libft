@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-//regular libft_func
 typedef struct s_list
 {
 	void			*content;
@@ -69,7 +68,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //printf
-
 int		ft_printf(const char *format, ...);
 int		write_str(char *str);
 int		ft_putnbr_decimal(int nbr, char *base);

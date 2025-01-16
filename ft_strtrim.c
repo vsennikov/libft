@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+/**
+ * Checks if a character is part of a given set of characters.
+ *
+ * @param set The set of characters to check against.
+ * @param ch The character to check.
+ * @return 1 if the character is part of the set, 0 otherwise.
+ */
 static int	part_of_set(char const *set, char ch)
 {
 	int	i;
@@ -26,6 +33,14 @@ static int	part_of_set(char const *set, char ch)
 	return (0);
 }
 
+/**
+ * Trims the characters from the beginning and end of a string that are part of a given set.
+ *
+ * @param s1 The string to be trimmed.
+ * @param set The set of characters to trim from the string.
+ * @return A new string with the characters from the set trimmed from the beginning and end.
+ *         The returned string should be freed by the caller.
+ */
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start_pos;

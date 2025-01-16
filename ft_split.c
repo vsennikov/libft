@@ -11,31 +11,28 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-/** 
- * Allocates (with malloc(3)) and returns an array
- * of strings obtained by splitting ’s’ using the
- * character ’c’ as a delimiter. The array must end
- * with a NULL pointer.
- * 
- * @param s   
- * The string to be split
- * @param c     
- * The delimiter character.
- * 
- * @return
- * The array of new strings resulting from the split.
- * NULL if the allocation fails.
- * 
- * @note
- * If s contain only delimetr chars, we call special func
- * that returns **res with 1 el which = 0.
- * In other case we call trim to delete delimetr from begging
- * and end of str. Than call create_arr() which is calculating
- * numb of delimets + 2 (example: we have 2 words with 1 delim, in
- * that case we will create arr with size 3(2 for words and 1 for 
- * 0)). After that we start fullfill arr with substr().
- * Also free trimed_arr after trim() 
+
+/**
+ * @brief Splits a string into an array of substrings based on a delimiter character.
+ *
+ * This function takes a string `s` and a delimiter character `c`, and splits the string
+ * into an array of substrings, where each substring is a segment of the original string
+ * that is separated by the delimiter character. The resulting array is dynamically allocated
+ * and must be freed by the caller.
+ *
+ * Supporting functions:
+ * - `count_words`: Counts the number of words in the input string separated by the delimiter.
+ * - `malloc_word`: Allocates memory for a single word and copies it from the input string.
+ * - `free_words`: Frees the memory allocated for the array of substrings in case of an error.
+ *
+ * @param s The input string to be split.
+ * @param c The delimiter character used to split the string.
+ * @return A pointer to an array of substrings, or NULL if memory allocation fails.
+ *         If the input string consists entirely of delimiter characters, an array
+ *         containing a single NULL pointer is returned.
  */
+char	**ft_split(char const *s, char c);
+
 static char	**create_arr(char const *s, char c)
 {
 	char	**res;
