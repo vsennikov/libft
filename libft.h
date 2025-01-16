@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:12:25 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/02 17:36:16 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:28:57 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-
 
 //regular libft_func
 typedef struct s_list
@@ -76,17 +75,5 @@ int		write_str(char *str);
 int		ft_putnbr_decimal(int nbr, char *base);
 int		ft_putnbr_base(unsigned int nbr, char *base);
 int		ft_putnbr_add(unsigned long add, char *base);
-
-//get_next_line
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
-# endif
-
-char	*get_next_line(int fd);
-int		check_nl(char *buff);
-char	*init_buf(size_t buff_size);
-char	*transfer_str(char *old, char *buff, size_t buff_size);
-char	*return_line(char *saver);
-char	*reorganise_saver(char *saver);
 
 #endif
